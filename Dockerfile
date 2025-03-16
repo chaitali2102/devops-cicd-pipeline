@@ -1,8 +1,11 @@
 # Base image
 FROM nginx:latest
 
-# Copy all project files into the container
-COPY . /usr/share/nginx/html
+# Copy HTML file to Nginx default folder
+COPY app /usr/share/nginx/html
 
-# Start Nginx server
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]

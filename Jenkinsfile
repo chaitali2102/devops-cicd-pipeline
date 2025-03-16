@@ -8,14 +8,14 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t my-nginx-app .'
+                sh 'docker build -t chaitali2104/my-nginx-app:latest .'
             }
         }
         stage('Push to Docker Hub') {
             steps {
                 withDockerRegistry([credentialsId: 'docker-hub-credentials', url: '']) {
-                    sh 'docker tag my-nginx-app your-dockerhub-username/my-nginx-app:latest'
-                    sh 'docker push your-dockerhub-username/my-nginx-app:latest'
+                    sh 'docker tag my-nginx-app chaitali2104/my-nginx-app:latest'
+                    sh 'docker push chaitali2104/my-nginx-app:latest'
                 }
             }
         }
